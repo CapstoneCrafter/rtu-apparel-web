@@ -1,7 +1,7 @@
 //MAIN IMAGE
 
 import React from 'react'
-import Patch from '../assets/mpatch.png'
+import Patch from '../Assets/mpatch.png'
 
 export const MainPatch = () => {
   return (

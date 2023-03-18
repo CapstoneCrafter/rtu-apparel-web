@@ -1,6 +1,6 @@
 //SHOP OUR CATEGORIES IMAGE
 import React from 'react'
-import userUniform from '../assets/user-uniform.png'
+import userUniform from '../Assets/user-uniform.png'
 
 const UserUniform = () => {
   return (

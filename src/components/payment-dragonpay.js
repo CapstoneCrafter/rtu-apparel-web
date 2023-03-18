@@ -1,10 +1,10 @@
 //FOOTER IMAGE
 import React from 'react'
-import dragonPayment from '../assets/payment-drp.png'
+import dragonPayment from '../Assets/payment-drp.png'
 
 export const DragonPayment = () => {
   return (
-    <img src={dragonPayment} alt='' className='w-auto h-auto'/>
+    <img src={dragonPayment} alt='' className='w-auto h-auto '/>
   )
 }
 

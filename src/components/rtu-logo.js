@@ -1,6 +1,6 @@
 //NAVBAR LOGO
 import React from 'react'
-import Logo from '../assets/RTU_Seal.png'
+import Logo from '../Assets/RTU_Seal.png'
 
 export const RTULogo = () => {
   return (

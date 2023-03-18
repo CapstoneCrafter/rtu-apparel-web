@@ -1,7 +1,7 @@
 //SHOP OUR CATEGORIES IMAGE
 
 import React from 'react'
-import userjersey from '../assets/user-jersey.png'
+import userjersey from '../Assets/user-jersey.png'
 
 export const UserJersey = () => {
   return (

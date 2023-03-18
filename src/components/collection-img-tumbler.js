@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import tumblerCollection from '../assets/collection-tumb.png'
+import tumblerCollection from '../Assets/collection-tumb.png'
 
 const TumblerCollection = () => {
   return (

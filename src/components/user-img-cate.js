@@ -1,7 +1,7 @@
 //SHOP OUR CATEGORIES IMAGE
 
 import React from 'react'
-import userimg from '../assets/user-cat.png'
+import userimg from '../Assets/user-cat.png'
 
 const UserCategory = () => {
   return (

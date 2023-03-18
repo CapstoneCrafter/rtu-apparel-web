@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import toteCollection from '../assets/collection-tote.png'
+import toteCollection from '../Assets/collection-tote.png'
 
 const ToteCollection = () => {
   return (

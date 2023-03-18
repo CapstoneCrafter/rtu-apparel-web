@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import patchCollection from '../assets/collection-patch.png'
+import patchCollection from '../Assets/collection-patch.png'
 
 const PatchCollection = () => {
   return (

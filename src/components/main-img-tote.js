@@ -1,7 +1,7 @@
 //MAIN IMAGE
 
 import React from 'react'
-import Tote from '../assets/mtote.png'
+import Tote from '../Assets/mtote.png'
 
 export const MainTote = () => {
   return (

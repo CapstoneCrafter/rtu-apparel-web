@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import peUniform from '../assets/collection-p.e.png'
+import peUniform from '../Assets/collection-p.e.png'
 
 export const PECollection = () => {
   return (

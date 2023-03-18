@@ -1,6 +1,6 @@
 //TEAM IMAGE
 import React from 'react'
-import DesignerPics from '../assets/ux.png'
+import DesignerPics from '../Assets/ux.png'
 
 const Designer = () => {
   return (

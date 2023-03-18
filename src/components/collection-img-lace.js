@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import laceCollection from '../assets/collection-lace.png'
+import laceCollection from '../Assets/collection-lace.png'
 
 const LaceCollection = () => {
   return (

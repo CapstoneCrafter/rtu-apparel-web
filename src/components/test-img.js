@@ -1,10 +1,10 @@
 //test image
 
 import React from 'react'
-import slideOne from '../assets/slideshow-1.png'
+import slideOne from '../Assets/slideshow-1.png'
 const Testimg = () => {
   return (
-    <img src={slideOne} alt='' className='' />
+    <img src={slideOne} alt='' className='w-32 h-32' />
   )
 }
 

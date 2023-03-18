@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import engCollection from '../assets/collection-eng.png'
+import engCollection from '../Assets/collection-eng.png'
 
 const EngCollection = () => {
   return (

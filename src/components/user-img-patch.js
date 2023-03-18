@@ -1,6 +1,6 @@
 //SHOP OUR CATEGORIES IMAGE
 import React from 'react'
-import userPatch from '../assets/user-patch.png'
+import userPatch from '../Assets/user-patch.png'
 
 export const UserPatch = () => {
   return (

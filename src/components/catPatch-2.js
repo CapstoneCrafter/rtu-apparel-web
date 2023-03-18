@@ -1,7 +1,7 @@
 //PATCH CATEGORY IMAGE
 
 import React from 'react'
-import patchTwo from '../assets/catPatch-2.png'
+import patchTwo from '../Assets/catPatch-2.png'
 
 export const CategoryPatchTwo = () => {
   return (

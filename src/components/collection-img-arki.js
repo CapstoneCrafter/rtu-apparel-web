@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import arkiCollection from '../assets/collection-arki.png'
+import arkiCollection from '../Assets/collection-arki.png'
 
 const ArkiCollection = () => {
   return (

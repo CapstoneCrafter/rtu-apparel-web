@@ -24,7 +24,7 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-//authentication for login
+//authentication for login/sign up
 export const auth = getAuth(app)
 
 //database for contact form

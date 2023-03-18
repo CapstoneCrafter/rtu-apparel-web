@@ -1,7 +1,7 @@
 //MAIN IMAGE
 
 import React from 'react'
-import Cap from '../assets/mcap.png'
+import Cap from '../Assets/mcap.png'
 
 export const MainCap = () => {
   return (

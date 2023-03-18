@@ -1,7 +1,7 @@
 //PATCH CATEGORY IMAGE
 
 import React from 'react'
-import jersey from '../assets/user-jersey.png'
+import jersey from '../Assets/user-jersey.png'
 
 export const CategoryJersey = () => {
   return (

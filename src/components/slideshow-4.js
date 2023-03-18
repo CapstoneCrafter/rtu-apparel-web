@@ -1,6 +1,6 @@
 //SLIDESHOW IMAGE
 import React from 'react'
-import slideFour from '../assets/slideshow-4.png'
+import slideFour from '../Assets/slideshow-4.png'
 
 const SlideFour = () => {
   return (

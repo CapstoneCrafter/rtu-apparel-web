@@ -1,7 +1,7 @@
 //MAIN IMAGE
 
 import React from 'react'
-import Lace from '../assets/mlace.png'
+import Lace from '../Assets/mlace.png'
 
 export const MainLace = () => {
   return (

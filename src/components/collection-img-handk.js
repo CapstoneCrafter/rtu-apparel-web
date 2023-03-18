@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import handkCollection from '../assets/collection-handk.png'
+import handkCollection from '../Assets/collection-handk.png'
 
 const HandkCollection = () => {
   return (

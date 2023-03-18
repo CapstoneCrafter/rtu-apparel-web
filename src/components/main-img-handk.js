@@ -1,7 +1,7 @@
 //MAIN IMAGE
 
 import React from 'react'
-import Handk from '../assets/mhandk.png'
+import Handk from '../Assets/mhandk.png'
 
 export const MainHandk = () => {
   return (

@@ -1,6 +1,6 @@
 //SHOP OUR CATEGORIES IMAGE
 import React from 'react'
-import userLaceImg from '../assets/user-lace.png'
+import userLaceImg from '../Assets/user-lace.png'
 
 export const UserLace= () => {
   return (

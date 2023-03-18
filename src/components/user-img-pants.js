@@ -1,6 +1,6 @@
 //SHOP OUR CATEGORIES IMAGE
 import React from 'react'
-import userPants from '../assets/nav-men-women.png'
+import userPants from '../Assets/nav-men-women.png'
 
 export const UserPants = () => {
   return (

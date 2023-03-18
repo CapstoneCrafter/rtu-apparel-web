@@ -1,10 +1,10 @@
 //FOOTER IMAGE
 import React from 'react'
-import codPayment from '../assets/payment-cod.png'
+import codPayment from '../Assets/payment-cod.png'
 
 export const CodPayment = () => {
   return (
-    <img src={codPayment} alt='' className='w-auto h-auto'/>
+    <img src={codPayment} alt='' className='w-auto h-auto '/>
   )
 }
 

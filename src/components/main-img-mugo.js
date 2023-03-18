@@ -1,7 +1,7 @@
 //MAIN IMAGE
 
 import React from 'react'
-import MugTwo from '../assets/mmugg.png'
+import MugTwo from '../Assets/mmugg.png'
 
 export const MainMugtwo = () => {
   return (

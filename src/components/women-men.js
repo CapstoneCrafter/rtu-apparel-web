@@ -1,6 +1,6 @@
 //MEN AND WOMEN IMAGE
 import React from 'react'
-import menWomenshirt from '../assets/navv-men-women.png'
+import menWomenshirt from '../Assets/navv-men-women.png'
 
 export const MenWomenShirt = () => {
   return (

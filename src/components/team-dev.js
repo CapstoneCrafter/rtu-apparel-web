@@ -1,6 +1,6 @@
 //TEAM IMAGE
 import React from 'react'
-import DevPics from '../assets/dev.png'
+import DevPics from '../Assets/dev.png'
 
 const Dev = () => {
   return (

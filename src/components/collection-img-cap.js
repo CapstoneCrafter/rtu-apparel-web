@@ -1,6 +1,6 @@
 //RTU COLLECTION IMAGE
 import React from 'react'
-import capCollection from '../assets/collection-cap.png'
+import capCollection from '../Assets/collection-cap.png'
 
 const CapCollection = () => {
   return (

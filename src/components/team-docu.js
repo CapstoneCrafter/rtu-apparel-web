@@ -1,6 +1,6 @@
 //TEAM IMAGE
 import React from 'react'
-import DocuPics from '../assets/docu.png'
+import DocuPics from '../Assets/docu.png'
 const Docu = () => {
   return (
     <div>

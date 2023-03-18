@@ -1,6 +1,6 @@
 //FOOTER IMAGE
 import React from 'react'
-import jntLogistic from '../assets/logistic-jnt.png'
+import jntLogistic from '../Assets/logistic-jnt.png'
 
 export const JntLogistic = () => {
   return (

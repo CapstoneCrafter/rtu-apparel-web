@@ -1,6 +1,6 @@
 //TEAM IMAGE
 import React from 'react'
-import projectPics from '../assets/prjm.png'
+import projectPics from '../Assets/prjm.png'
 
 const Manager = () => {
   return (

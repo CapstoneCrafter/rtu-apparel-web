@@ -8,6 +8,9 @@ module.exports = {
       spacing: {
         'cc': '50rem',
         'c': '40rem',
+      },
+      width:{
+        '1080': '67.5rem',
       }
     },
   },
