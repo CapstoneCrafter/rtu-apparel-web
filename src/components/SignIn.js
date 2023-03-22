@@ -17,6 +17,8 @@ import {FcGoogle} from 'react-icons/fc'
 import {AiOutlineEye,
         AiOutlineEyeInvisible
 } from 'react-icons/ai'
+import { db } from '../Database/firebase'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 
 
 const SignIn = () => {
@@ -27,14 +29,16 @@ const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    const {signIn, googleSignIn} = useAuth()
+    const mounted = useRef(false)
+
+    const userCollectionRef = collection(db, "users-info" )
     // const location = useLocation()
 
+    //show password icon function
     const PasswordShow = () =>{
         setShowPassword(prevState => !prevState)
     }
-
-    const {signIn, googleSignIn} = useAuth()
-    const mounted = useRef(false)
 
     useEffect(() => {
         mounted.current = true
@@ -43,36 +47,105 @@ const SignIn = () => {
         }
     }, [])
 
+    // const handleSubmit = async (e) =>{
+    //     e.preventDefault()
+    //     setError('')
+
+    //     if(!email || !password){
+    //         setError(error.message)
+    //     }  
+    //     setIsSubmitting(true)      
+
+    //     signIn(email, password)
+    //     .then((response) => {
+    //         console.log(response)
+    //         navigate('/RTUApparel')
+    //     })
+    //     .catch((error) => {
+    //         console.log(error.message) 
+    //        setError(error.message)
+    // })
+    //     .finally(() => mounted.current && setIsSubmitting(false))
+    // }
     const handleSubmit = async (e) =>{
         e.preventDefault()
         setError('')
 
-        if(!email || !password){
+        if (!email || !password) {
             setError(error.message)
-        }  
-        setIsSubmitting(true)      
-        signIn(email, password)
-        .then((response) => {
-            console.log(response)
-            navigate('/RTUApparel')
-        })
-        .catch((error) => {
-            console.log(error.message) 
-           setError(error.message)
-    })
-        .finally(() => mounted.current && setIsSubmitting(false))
-    }
-
-    const handleGoogle = async(e) =>{
-        e.preventDefault()
-
-        try{
-            googleSignIn()
-            navigate('/RTUApparel')
-        }catch(error){
-            console.log(error.message)
+          }
+        
+          setIsSubmitting(true)
+        
+          signIn(email, password)
+            .then(async (response) => {
+              // console.log(response)
+        
+              // Check if a document with this email already exists
+              const existingUserQuery = query(userCollectionRef, where('email', '==', email))
+              const existingUserDocs = await getDocs(existingUserQuery)
+        
+              if (existingUserDocs.size > 0) {
+                console.log('User already exists')
+                navigate('/RTUApparel')
+              } else {
+                // Add a new document to the collection
+                addDoc(userCollectionRef, {
+                  email: email,
+                  password: password,
+                }).then((response) => {
+                  // console.log(response)
+                  navigate('/RTUApparel')
+                })
+              }
+            })
+            .catch((error) => {
+              console.log(error.message)
+              setError(error.message)
+            })
+            .finally(() => mounted.current && setIsSubmitting(false))
         }
-    }
+     
+        const handleGoogle = async (e) => {
+            e.preventDefault();
+          
+            try {
+              const result = await googleSignIn();
+              console.log(result)
+              const { user } = result;
+
+              const existingUserQuery = query(userCollectionRef,where('googleId', '==', user.uid))
+              const existingUserDocs = await getDocs(existingUserQuery)
+
+              if(existingUserDocs.size > 0){
+                console.log('already exist')
+                navigate('/RTUApparel')
+              }else{
+                await addDoc(userCollectionRef, {
+                    email: user.email,
+                    name: user.displayName,
+                    photoURL: user.photoURL,
+                    googleId: user.uid,
+                  });
+                  navigate("/RTUApparel");
+              }
+        
+            } catch (error) {
+              console.log(error.message);
+            }
+          };
+        
+    
+    // const handleGoogle = async(e) =>{
+    //     e.preventDefault()
+
+    //     try{
+    //         googleSignIn()
+    //         navigate('/RTUApparel')
+    //     }catch(error){
+    //         console.log(error.message)
+    //     }
+    // }
 
 
 
@@ -120,7 +193,9 @@ const SignIn = () => {
                 
                     <button 
                     // isLoading={isSubmitting}
-                    className='w-full bg-orange-500 mt-6 p-3 mb-4 font-normal text-white rounded-lg hover:opacity-80'>
+                    className='w-full bg-orange-500 mt-6 p-3 mb-4 font-normal text-white rounded-lg hover:opacity-80'
+                    // onClick={submitData}
+                    >
                     Sign In
                     </button>
 

@@ -14,14 +14,23 @@ const getDefaultCart = () => {
 export const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart())
 
+    //addToCart function 
     const addToCart = (itemId) => {
-        setCartItems((prev) => ({...prev, [itemId]: prev[itemId] + 1}))
-    }
-
+      setCartItems((prev) => {
+        const updatedItems = { ...prev };
+        if (updatedItems[itemId] < 5) {
+          updatedItems[itemId] += 1;
+        }
+        return updatedItems;
+      });
+    };
+    
+    //removeFromCart function 
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({...prev, [itemId]: prev[itemId] - 1}))
     }
 
+    //getTotalCartAmount function wherein you get the total of all items 
     const getTotalCartAmount = () => {
         let totalAmount = 0
         for(const item in cartItems) {
@@ -33,12 +42,23 @@ export const ShopContextProvider = (props) => {
         return totalAmount
     }
 
+    //total amount of items + shipping fee
+    const getTotalPayment = () => {
+      const subtotal = getTotalCartAmount();
+      const shippingCost = 30;
+      const totalAmount = subtotal + shippingCost;
+      return totalAmount;
+    };
+    
+    
+    //total amount of specific item
     const getTotalAmountForItem = (itemId) => {
         const itemInfo = RTUPRODUCTS.find((product) => product.id === itemId);
         const quantity = cartItems[itemId];
         return itemInfo.price * quantity;
       }
 
+    //delete specific item
     const deleteFromCart = (itemId) => {
         setCartItems((prev) => {
           const updatedCartItems = {...prev};
@@ -49,6 +69,7 @@ export const ShopContextProvider = (props) => {
         });
       }
 
+    //clear all items in cart
       const clearFromCart = () => {
         setCartItems((prev) => {
           const updatedCartItems = {};
@@ -68,6 +89,7 @@ export const ShopContextProvider = (props) => {
         getTotalAmountForItem,
         deleteFromCart,
         clearFromCart,
+        getTotalPayment
        
     }
 

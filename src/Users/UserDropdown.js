@@ -19,6 +19,7 @@ export default function UserDropdown() {
     try{
       await logOut()
       navigate('/')
+
     }
     catch(error){
       console.log(error.message)

@@ -1,4 +1,5 @@
 import React, { useContext,useEffect,useState } from 'react'
+import { Link } from 'react-router-dom';
 import { RTUPRODUCTS } from './UserProducts';
 import { ShopContext } from '../functions/cartContext';
 import { GiShoppingBag } from 'react-icons/gi'
@@ -57,14 +58,15 @@ const UserCartMapping = () => {
     <div className='max-w-7xl mx-auto'>
 
         <div className='mx-5'>
-        <div className='text-base font-semibold uppercase md:grid md:grid-cols-6 md:justify-items-center md:shadow-lg md:mb-10  md:p-3 md:font-semibold'>
-              <h1 className={`${isBreakpointsMedium ? 'hidden' : ''}`}>Product</h1>
-              <h1 className={`${isBreakpointsMedium ? 'hidden' : ''}`}>Variations</h1>
-              <h1 className={`${isBreakpointsMedium ? 'hidden' : ''}`}>Unit Price</h1>
-              <h1 className={`${isBreakpointsMedium ? 'hidden' : ''}`}>Quantity</h1>
-              <h1 className={`${isBreakpointsMedium ? 'hidden' : ''}`}>Total Price</h1>
-              <h1 className={`${isBreakpointsMedium ? 'hidden' : ''}`}>Action</h1> 
+        <div className='text-base font-semibold uppercase md:flex md:justify-between	md:shadow-lg md:mb-10  md:p-3 md:font-semibold'>
+              <h1 className={`${isBreakpointsMedium ? 'hidden' : 'md:ml-12 '}`}>Product</h1>
+              <h1 className={`${isBreakpointsMedium ? 'hidden' : 'lg:-ml-10'}`}>Unit Price</h1>
+              <h1 className={`${isBreakpointsMedium ? 'hidden' : 'md:-ml-10'}`}>Quantity</h1>
+              <h1 className={`${isBreakpointsMedium ? 'hidden' : 'md:-ml-10'}`}>Total Price</h1>
+              <h1 className={`${isBreakpointsMedium ? 'hidden' : 'md:mr-8'}`}>Action</h1> 
             </div>
+
+         
 
          <div>
             {RTUPRODUCTS.map((product) => {
@@ -80,15 +82,21 @@ const UserCartMapping = () => {
         </div> 
         
        
+    
+        {!isEmpty ? <p className=' uppercase text-sm text-right text-indigo-600 font-semibold italic mb-2 md:-mt-5'>Note: that you can select the size and variation of your purchase during the confirmation process.</p>: null}
+        <div className='font-semibold flex justify-end'>
 
-        <div className='font-semibold mt-5 flex justify-end'>
-
+       
                   <form>
+                  
                     <button onClick={clearFromCart} className='p-2 bg-indigo-600 w-36 rounded-md text-white mr-4'>Clear Cart</button>
+                    <Link to='checkout'>
                     <button className='p-2 bg-orange-500 w-36 rounded-md text-white'>CheckOut Items</button>
+                    </Link>
                   </form>
                 </div>
 
+    
         <div className='mt-5 flex justify-end text-sm font-semibold mx-5'>
             <h1>TOTAL AMOUNTS: <span className='text-red-600 text-2xl font-bold ml-2'>₱{totalAmount}.00</span></h1>
         </div>

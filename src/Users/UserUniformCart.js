@@ -129,17 +129,7 @@ export const UserUniformCart = () => {
         </ul>
         </div>
 
-        <div className='flex justify-end mt-5'>
-        <div className='flex items-center mr-2 bg-black rounded-md p-2 w-36 justify-center'>
-          <BsCart3 size={20} className='mr-2 text-white'/>
-          <button className='text-white'>Add to Cart</button>
-        </div>
 
-        <div>
-          <button className='bg-indigo-700 p-2 w-32 text-white rounded-md'>Buy now</button>
-        </div>
-
-       </div>
        
        </div>
     </div>

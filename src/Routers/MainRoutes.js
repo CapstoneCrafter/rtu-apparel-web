@@ -63,6 +63,9 @@ import UserHandkerchiefCart from '../Users/UserHandkerchiefCart'
 import UserTumblerCart from '../Users/UserTumblerCart'
 import UserMugCart from '../Users/UserMugCart'
 import UserCartMapping from '../Users/UserCartMapping'
+import UserCheckOut from '../Users/UserCheckOut'
+import UserCheckOutMapping from '../Users/UserCheckOutMapping'
+
 
 //Routes for navigation and footer pages.
 import Nav from '../Navigation/Nav'
@@ -226,14 +229,15 @@ const MainRoutes = () => {
                 element={<UserProtected><UserSettings/></UserProtected>} 
                 />
 
-                {/* <Route 
-                path='cart' 
-                element={<UserProtected><UserCart/></UserProtected>} 
-                /> */}
 
                 <Route
                 path='cart'
                 element={<UserProtected><UserCartMapping/></UserProtected>}
+                />
+
+                <Route
+                path='cart/checkout'
+                element={<UserProtected><UserCheckOutMapping/></UserProtected>}
                 />
 
                 <Route 

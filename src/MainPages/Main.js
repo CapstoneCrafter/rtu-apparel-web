@@ -112,7 +112,7 @@ export default function Main() {
                   </div>
                 </div>
 
-                <Link to='signin' className="inline-block rounded-md border border-transparent bg-black py-3 px-8 text-center font-medium text-white hover:opacity-90">Show Now!</Link>
+                <Link to='signin' className="inline-block rounded-md border border-transparent bg-black py-3 px-8 text-center font-medium text-white hover:opacity-90">Shop Now!</Link>
   
                
               </div>
