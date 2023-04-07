@@ -19,6 +19,7 @@ import {AiOutlineEye,
 } from 'react-icons/ai'
 import { db } from '../Database/firebase'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import signin from './signin.css'
 
 
 const SignIn = () => {
@@ -155,7 +156,7 @@ const SignIn = () => {
             </p>
             </div>
 
-            <div className='h-auto w-96 mx-auto shadow-2xl rounded-md mt-5 bg-slate-100 lg:mr-20'>
+            <div className='main-class h-auto w-96 mx-auto shadow-2xl rounded-md mt-5 bg-slate-100 lg:mr-20'>
                 <div className='mx-5 pt-5'>
 
                 <form onSubmit={handleSubmit} >

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import RTULogo from '../components/rtu-logo'
 import UserDropdown from '../Users/UserDropdown'
 import { useAuth } from '../functions/authContext'
-
+import navUser from './navUser.css'
 
 export const NavUser = () => {
 
@@ -27,7 +27,7 @@ export const NavUser = () => {
      <div className=' flex items-center '>
 
      <div>
-     <img className="object-cover w-10 h-10 rounded-full" src={currentUser?.photoURL || "https://pcgacademia.pl/wp-content/themes/pcgacademia-child/images/png/avatar-placeholder.png"} alt="" />
+     <img className="nav-img object-cover w-10 h-10 rounded-full" src={currentUser?.photoURL || "https://pcgacademia.pl/wp-content/themes/pcgacademia-child/images/png/avatar-placeholder.png"} alt="" />
      </div>
 
      <UserDropdown />
