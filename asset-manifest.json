@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rtu-apparel-web/static/css/main.98c5fc09.css",
-    "main.js": "/rtu-apparel-web/static/js/main.bfc53a2f.js",
+    "main.css": "/rtu-apparel-web/static/css/main.74e38f47.css",
+    "main.js": "/rtu-apparel-web/static/js/main.40889671.js",
     "static/media/mpatch.png": "/rtu-apparel-web/static/media/mpatch.85122437ea5ab765d02a.png",
     "static/media/ux.png": "/rtu-apparel-web/static/media/ux.5f49a131b78296b17689.png",
     "static/media/PatchW&B.png": "/rtu-apparel-web/static/media/PatchW&B.186371a0c645611c3253.png",
@@ -76,11 +76,11 @@
     "static/media/payment-cod.png": "/rtu-apparel-web/static/media/payment-cod.df028c3128f3de317f56.png",
     "static/media/payment-drp.png": "/rtu-apparel-web/static/media/payment-drp.c35b3260d3ece33e9d87.png",
     "index.html": "/rtu-apparel-web/index.html",
-    "main.98c5fc09.css.map": "/rtu-apparel-web/static/css/main.98c5fc09.css.map",
-    "main.bfc53a2f.js.map": "/rtu-apparel-web/static/js/main.bfc53a2f.js.map"
+    "main.74e38f47.css.map": "/rtu-apparel-web/static/css/main.74e38f47.css.map",
+    "main.40889671.js.map": "/rtu-apparel-web/static/js/main.40889671.js.map"
   },
   "entrypoints": [
-    "static/css/main.98c5fc09.css",
-    "static/js/main.bfc53a2f.js"
+    "static/css/main.74e38f47.css",
+    "static/js/main.40889671.js"
   ]
 }
