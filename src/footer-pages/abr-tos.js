@@ -1,12 +1,39 @@
-//FOOTER PAGES
+//term of service footer page
 
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 export const Term = () => {
+
+  const [isBreakpointSmall, setIsBreakPointSmall] = useState(false)
+  useEffect(() => {
+
+    const handleSmall = () => {
+      if (window.innerWidth <= 640) {
+        setIsBreakPointSmall(true);
+      } else {
+        setIsBreakPointSmall(false);
+      }
+    };
+    handleSmall();
+    window.addEventListener('resize', handleSmall);
+    return () => {
+      window.removeEventListener('resize', handleSmall);
+    };
+  }, []);
+
   return(
     
     <div className='max-w-7xl mx-auto'>
         <div className='mx-5 my-5'>
+
+           {isBreakpointSmall
+            ?
+            <Link to='/'>  <AiOutlineArrowLeft className='mb-5' size={35}/></Link>
+            :
+            ''
+            }
             <h1 className='font-bold text-5xl'>Terms of Service</h1>
             <p className='text-gray-500 text-md'>Welcome to <span className='text-orange-500 font-bold'>RTU Apparel!</span> Please read the following terms of service carefully before using our website.</p>
 

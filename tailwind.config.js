@@ -11,7 +11,11 @@ module.exports = {
       },
       width:{
         '1080': '67.5rem',
-      }
+      },
+      fontFamily: {
+        'fontMain': [  'Bebas Neue', 'cursive' ] ,
+      },
+
     },
   },
   plugins: [

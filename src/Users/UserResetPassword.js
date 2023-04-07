@@ -1,6 +1,6 @@
 //type={showPassword ? "text" : "password"} = if the showPassword is 'true' show the 'text', if not 'true', show the 'password' type.
 //{showPassword ? <AiOutlineEye size={20} className='-ml-8 -mb-1'/> : <AiOutlineEyeInvisible size={20} className='-ml-8 -mb-1'/>} if showPassword is 'true' show AiOutLine Eye, if not 'true' show the AiOutlinEyeInvisible.
-
+//RESET PASSWORD PAGE
 import React, {useState, useEffect, useRef} from 'react'
 import { Link, 
          useLocation, 

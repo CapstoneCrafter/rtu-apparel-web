@@ -1,13 +1,25 @@
 // authContext for our Sign in / Sign up / forget & reset Password system.
 
+
+//import createContext, useContext, useEffect, useState from react.
 import {createContext,
         useContext,
         useEffect,
         useState,
         } from "react";    
 
+//import the auth from firebase for our authentication.
 import { auth } from '../Database/firebase'
 
+
+//createUserWithEmailAndPassword: Creates a new user account in Firebase Authentication with the specified email address and password.
+//signInWithEmailAndPassword: Signs in an existing user with the specified email address and password.
+//onAuthStateChanged: Registers a listener that is called whenever the user authentication state changes (e.g. when a user signs in or signs out).
+//signOut: Signs out the currently authenticated user.
+//GoogleAuthProvider: An object that provides the Google Sign-In authentication mechanism.
+//signInWithPopup: Signs in a user using a popup window for authentication with a specified authentication provider.
+//sendPasswordResetEmail: Sends a password reset email to the given email address, which allows the user to reset their password.
+//confirmPasswordReset: Confirms a password reset with the given verification code and new password.
 import { createUserWithEmailAndPassword,
          signInWithEmailAndPassword,
          onAuthStateChanged,
@@ -16,9 +28,15 @@ import { createUserWithEmailAndPassword,
          signInWithPopup,
          sendPasswordResetEmail,
          confirmPasswordReset,
-
 } from "firebase/auth";
 
+// currentUser: A property that holds the current user object. This property is initially set to null.
+// signUp: A function that returns a promise to create a new user account with the specified email and password.
+// signIn: A function that returns a promise to sign in an existing user with the specified email and password.
+// logOut: A function that returns a promise to sign out the currently authenticated user.
+// googleSignIn: A function that returns a promise to sign in a user using Google Sign-In.
+// forgotPassword: A function that returns a promise to send a password reset email to the given email address.
+// resetPassword: A function that returns a promise to confirm a password reset with the given verification code and new password.
 const AuthContext = createContext({
     currentUser: null,
     signUp: () => Promise,
@@ -30,9 +48,13 @@ const AuthContext = createContext({
     
 })
 
+
+//create a useAuth function.
 export const useAuth = () => useContext(AuthContext)
 
 export default function AuthContextProvider({ children }) {
+
+    //create a useState for our user.
     const [currentUser, setCurrentUser] = useState(null)
 
     useEffect(() =>{
@@ -44,23 +66,28 @@ export default function AuthContextProvider({ children }) {
         }
     }, [])
 
+    //signUp functionality, create new account using email.
     const signUp = (email, password) => { 
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    //signIn functionality, login with the email and password that you created.
     const signIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+    //signIn with google 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider()
         return signInWithPopup(auth, provider)
     }
 
+    //logOut functionality, signOut the currentUser.
     const logOut = () => {
         return signOut(auth)
     }
 
+    //forgotPassword functionality, and will send an email to your provided email address.
     const forgotPassword = (email) => {
         return sendPasswordResetEmail(auth, email, {
             url: 'http://localhost:3000/signin'
@@ -68,11 +95,13 @@ export default function AuthContextProvider({ children }) {
 
     }
 
+    //resetPassword function, create new password for your account.
     const resetPassword = (oobCode, newPassword) => {
         return confirmPasswordReset(auth, oobCode, newPassword)
     }
 
 
+    //this function contain the functionality that we created.
     const value = {
         currentUser,
         signUp, 
@@ -83,79 +112,8 @@ export default function AuthContextProvider({ children }) {
         resetPassword,
     }
 
-    return <AuthContext.Provider value={value}>
+    //pass down the value function that we created, make sure all routes is in inside of authcontextprovider.
+    return <AuthContext.Provider value={value}> 
                  {children}
             </AuthContext.Provider>
 }
-
-
-
-
-// import { createContext, 
-//          useContext, 
-//          useEffect, 
-//          useState } from "react";
-
-// import { GoogleAuthProvider,
-//     signInWithPopup,
-//     createUserWithEmailAndPassword,
-//     signInWithEmailAndPassword,
-//     signOut,
-//     onAuthStateChanged
-//  } from 'firebase/auth'
-
-//  import { auth } from '../Database/firebase'
-
-// const UserContext = createContext()
-
-// export const AuthContextProvider = ({children}) =>{
-
-//     //create a state for our useEffect
-    
-//     const [user, setUser] = useState({})
-
-//     //pass in the email and password
-//     //sign up function
-//     const CreateUser = (email, password) => {
-//         return createUserWithEmailAndPassword(auth, email, password)
-//     }
-
-//     //create a function for sign in
-//     const logIn = (email, password) => {
-//         return signInWithEmailAndPassword(auth, email, password)
-//     }
-
-//     //create a function for google sign in
-//     const googleSignin = () =>{
-//         const provider = new GoogleAuthProvider()
-//         signInWithPopup(auth, provider)
-
-//     }
-
-//     //create a function for log out
-//     const logout = () => {
-//         return signOut(auth)
-//     }
-
-//     //to show the data of the user. Also, to check if the user is authenticated or not
-//     useEffect(() =>{
-//             const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
-//                 // console.log(currentUser)
-//                 setUser(currentUser)
-//             })
-//             return () => {
-//                 unsubscribe()
-//             }
-//     },[])
-
-//     return(
-//         <UserContext.Provider value={{CreateUser, user, logout, logIn, googleSignin}}>
-//             {children}
-//         </UserContext.Provider>
-//     )
-// }
-
-// //THIS FUNCTION MAKES OUR CONTEXT AVAILABLE IN OUR ALL APPLICATION.
-// export const UserAuth = () =>{
-//     return useContext(UserContext)
-// }

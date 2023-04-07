@@ -16,7 +16,7 @@ export const Nav = () => {
         <div className='flex items-center lg:ml-2  '>
         
         <Link to='/'> {<RTULogo/>} </Link>
-        <Link to='/' className='ml-1 font-black text-orange-500 text-lg lg:ml-3'>RTU Apparel</Link>
+        <Link to='/' className='ml-1 font-fontMain tracking-widest text-orange-500 text-lg lg:ml-3'>RTU Apparel</Link>
 
         </div>
 

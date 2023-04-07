@@ -1,3 +1,5 @@
+//PRIV API
+
 //UNIFORM CATEGORY
 import PEShirt from '../Assets/navv-men-women.png'
 
@@ -54,7 +56,7 @@ export const RTUPRODUCTS = [
         productName: "RTU BLUE THUNDER",
         price: 100.00,
         productImage: BlueThunder, 
-        productVariation: ['BLUE THUNDER'],
+        productVariation: ['BLUE THUNDER', ''],
         productSize: ['S','M', 'L', 'XL'],
         productManufacture: "Mandaluyong City, Metro Manila, Philippines.",
         path: "/RTUApparel/jersey/JerseyCart"
@@ -66,7 +68,7 @@ export const RTUPRODUCTS = [
         productName: "ID LACE",
         price: 100.00,
         productImage: IDLace, 
-        productVariation: ['RTU ID LACE'],
+        productVariation: ['RTU ID LACE', ''],
         productSize: ['----'],
         productManufacture: "Mandaluyong City, Metro Manila, Philippines.",
         path: "/RTUApparel/IDlace/IDLace"

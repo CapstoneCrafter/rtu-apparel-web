@@ -20,6 +20,7 @@ import LaceCollection from '../components/collection-img-lace'
 
 
 export const NavAcs = () => {
+  
   const [isBreakpointSmall, setIsBreakPointSmall] = useState(false)
   useEffect(() => {
 
@@ -36,6 +37,7 @@ export const NavAcs = () => {
       window.removeEventListener('resize', handleSmall);
     };
   }, []);
+
   return (
     <div className='max-w-7xl mx-auto mb-52'>
       <div className='mx-5 my-5'>

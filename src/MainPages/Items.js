@@ -1,3 +1,6 @@
+import IDlace from '../Assets/collection-lace.png'
+
+
 //ITEMS IN MAIN
 const products = [
     {
@@ -59,7 +62,8 @@ const products = [
       {
         id: 1,
         name: 'ID LACE',
-        imageSrc: 'https://media.discordapp.net/attachments/1068480442602364931/1078889995919687860/user-lace.png',
+        // imageSrc: 'https://media.discordapp.net/attachments/1068480442602364931/1078889995919687860/user-lace.png',
+        imageSrc: IDlace,
         imageAlt: "RTU ID LACE.",
         price: '₱100',
         color: 'Assorted',

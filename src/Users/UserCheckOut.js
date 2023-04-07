@@ -2,38 +2,25 @@ import React, {useContext, useState, useEffect} from 'react'
 import { ShopContext } from '../functions/cartContext'
 
 const UserCheckOut = (props) => {
-    const{id, productName, productVariation, productSize} = props.data   
+    const{  id, productName, productVariation, productSize} = props.data   
     const { cartItems } = useContext(ShopContext)
 
-    const [selectedVariation, setSelectedVariation] = useState()
-    const [selectedSize, setSelectedSize] = useState()
 
-    const handleVariation = (e) => {
-      const selectedVariation = e.target.value
-    localStorage.setItem('selectedVariation', selectedVariation)
-     setSelectedVariation(selectedVariation)
-   }
+  const [selectedVariation, setSelectedVariation] = useState(localStorage.getItem(`selectedVariation_${id}`) || '');
+  const [selectedSize, setSelectedSize] = useState(localStorage.getItem(`selectedSize_${id}`) || '');
 
-   useEffect(() => {
-    const storedVariation = localStorage.getItem('selectedVariation');
-     if (storedVariation) {
-       setSelectedVariation(storedVariation);
-     }
-   }, []);
+  const handleVariation = (e) => {
+    const selectedVariation = e.target.value;
+    localStorage.setItem(`selectedVariation_${id}`, selectedVariation);
+    setSelectedVariation(selectedVariation);
+  };
 
-
-    const handleSize = (e) => {
-    const selectedSize = e.target.value
-    localStorage.setItem('selectedSize', selectedSize)
-    setSelectedSize(selectedSize)
-    }
-
-    useEffect(() => {
-    const storedSize = localStorage.getItem('selectedSize');
-    if (storedSize) {
-    setSelectedSize(storedSize);
-    }
-    }, []);
+  const handleSize = (e) => {
+    const selectedSize = e.target.value;
+    localStorage.setItem(`selectedSize_${id}`, selectedSize);
+    setSelectedSize(selectedSize);
+  };
+  
    
   return (
     <div className='max-w-7xl mx-auto'>
@@ -93,8 +80,7 @@ const UserCheckOut = (props) => {
                   </div>
                    
                    <div className='border-b-2 '>
-                    <h1 className='text-sm uppercase font-semibold text-[#748386]'>Product: <span className='text-sm text-red-500 font-bold ml-5'>{productName}</span></h1>
-
+                    <h1  className='text-sm uppercase font-semibold text-[#748386]'>Product: <span className='text-sm text-red-500 font-bold ml-5'>{productName}</span></h1>
                     <h1 className='text-sm uppercase font-semibold text-[#748386]'>Variations: <span className='text-sm text-red-500 font-bold ml-1 '>{selectedVariation}</span></h1>
                     <h1 className='text-sm uppercase font-semibold text-[#748386]'>Size: <span className='text-sm text-red-500 font-bold ml-14 '>{selectedSize}</span></h1>
                     <h1 className='text-sm uppercase font-semibold text-[#748386] mb-2'>Quantity: <span className='text-sm text-red-500 font-bold ml-4'>{cartItems[id]}</span></h1>
@@ -109,38 +95,4 @@ const UserCheckOut = (props) => {
 }
 
 export default UserCheckOut
-
-
-// import React, {useContext} from 'react'
-// import { ShopContext } from '../functions/cartContext'
-
-
-// const UserCheckOut = (props) => {
-//     const{id, productName, price, productImage, productVariation, productSize} = props.data
-
-    
-//     const { cartItems } = useContext(ShopContext)
- 
-
-
-   
-//   return (
-//     <div className='max-w-7xl mx-auto'>
-  
-//                     {/* PRODUCT DETAILS START */}
-                   
-//                     <h1 className='text-sm uppercase font-semibold text-[#748386]'>Product: <span className='text-sm text-red-500 font-bold ml-5'>{productName}</span></h1>
-//                     <h1 className='text-sm uppercase font-semibold text-[#748386]'>Variations: <span className='text-sm text-red-500 font-bold ml-1 '>{}</span></h1>
-//                     <h1 className='text-sm uppercase font-semibold text-[#748386]'>Size: <span className='text-sm text-red-500 font-bold ml-14 '>S</span></h1>
-//                     <h1 className='text-sm uppercase font-semibold text-[#748386] mb-2'>Quantity: <span className='text-sm text-red-500 font-bold ml-4'>{cartItems[id]}</span></h1>
-                
-//                     {/* PRODUCT DETAILS END */}
-                    
-          
-
-//     </div>
-//   )
-// }
-
-// export default UserCheckOut
 

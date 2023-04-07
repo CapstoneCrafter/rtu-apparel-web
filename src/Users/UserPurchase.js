@@ -1,3 +1,5 @@
+//WILL IMPLEMENT SOON
+
 import React from 'react'
 import {BsTruck} from 'react-icons/bs'
 

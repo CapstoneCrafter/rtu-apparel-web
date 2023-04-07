@@ -20,7 +20,7 @@ export const NavUser = () => {
      <div className='flex items-center  lg:ml-2  '>
      
      <Link to='/RTUApparel'> {<RTULogo/>} </Link>
-     <Link to='/RTUApparel' className='ml-1 font-black text-orange-500 text-lg lg:ml-3'>RTU Apparel</Link>
+     <Link to='/RTUApparel' className='ml-1 font-fontMain tracking-widest text-orange-500 text-lg lg:ml-3'>RTU Apparel</Link>
 
      </div>
 

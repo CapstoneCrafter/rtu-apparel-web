@@ -102,7 +102,7 @@ export const Footer = () => {
             </div>
 
             <div className='mx-8 mt-5 pb-20 md:pb-20'>
-                <h1 className='mt-4 font-medium text-sm text-orange-600 italic uppercase'>© 2023 RTU Apparel. All Rights Reserved.</h1>
+                <h1 className='mt-4 font-medium text-sm text-orange-600 uppercase'>© 2023 RTU Apparel. All Rights Reserved.</h1>
                 
             </div>
       </div>

@@ -1,9 +1,17 @@
-//FIREBASE FUNCTION
+//extract the funtionality given by firebase.
 
 // Import the functions you need from the SDKs you need
+
+//initialize was provided by firebase to get the project started.
 import { initializeApp } from "firebase/app";
+
+//import getFirestore to use the cloudStore firestore from firebase
 import { getFirestore } from "firebase/firestore"
+
+//import getAuth to use the login authentication function in firebase.
 import { getAuth } from "firebase/auth";
+
+
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -26,7 +34,7 @@ export const app = initializeApp(firebaseConfig);
 //authentication for login/sign up
 export const auth = getAuth(app)
 
-//database for contact form
+//database for our all data.
 export const db = getFirestore(app)
 
 // const analytics = getAnalytics(app);

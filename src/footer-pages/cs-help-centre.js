@@ -1,17 +1,51 @@
-//FOOTER PAGES
+//help-centre footer-page
 
-import React from 'react'
+
+
+import React, {useState, useEffect} from 'react'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+
+//install react-router-dom to access Link functionality.
 import { Link } from 'react-router-dom'
 
 export const Centre = () => {
+
+    const [isBreakpointSmall, setIsBreakPointSmall] = useState(false)
+    useEffect(() => {
+  
+      const handleSmall = () => {
+        if (window.innerWidth <= 640) {
+          setIsBreakPointSmall(true);
+        } else {
+          setIsBreakPointSmall(false);
+        }
+      };
+      handleSmall();
+      window.addEventListener('resize', handleSmall);
+      return () => {
+        window.removeEventListener('resize', handleSmall);
+      };
+    }, []);
+
   return (
 
     <div className='max-w-7xl mx-auto'>
+
+        <div className='m-5'>
+        
+            {isBreakpointSmall
+            ?
+            <Link to='/'>  <AiOutlineArrowLeft className='' size={35}/></Link>
+            :
+            ''
+            }
+
+        </div>
         <div className='my-8 mx-5 lg:flex items-center lg:my-32 '>
 
             <div className='lg:mr-64 lg:w-cc'>
             <h1 className='font-bold text-4xl'>Welcome to <span className='text-orange-500 '>RTU Apparel</span> Help Center!</h1>
-            <p className='text-gray-500 italic text-md mt-2'> If you cannot find what you are looking for, feel free to contact us through our website's 
+            <p className='text-gray-500 text-md mt-2'> If you cannot find what you are looking for, feel free to contact us through our website's 
             <Link to='contact-us' className='font-bold text-orange-500 hover:text-indigo-500'> contact </Link>     
             page.</p>
            

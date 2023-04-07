@@ -1,16 +1,50 @@
-//FOOTER PAGES
+//RTU Apparel team footer page.
 
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
+
+//import Designer,Dev,Docu,Manager components. These components contains the image of the team.
 import Designer from '../components/team-designer'
 import Dev from '../components/team-dev'
 import Docu from '../components/team-docu'
 import Manager from '../components/team-project-m'
 
 
+
 export const Team = () => {
+
+  const [isBreakpointSmall, setIsBreakPointSmall] = useState(false)
+  useEffect(() => {
+
+    const handleSmall = () => {
+      if (window.innerWidth <= 640) {
+        setIsBreakPointSmall(true);
+      } else {
+        setIsBreakPointSmall(false);
+      }
+    };
+    handleSmall();
+    window.addEventListener('resize', handleSmall);
+    return () => {
+      window.removeEventListener('resize', handleSmall);
+    };
+  }, []);
+
+
   return (
     
     <div className="mx-auto max-w-7xl">
+      <div className='m-5'>
+
+       {isBreakpointSmall
+            ?
+            <Link to='/'>  <AiOutlineArrowLeft className='' size={35}/></Link>
+            :
+            ''
+            }
+            </div>
+
         <div className='mx-5 my-10 lg:flex '>
 
           <div className=' '>
@@ -24,7 +58,7 @@ export const Team = () => {
 
             <div className='md:mr-5'>
             <div className='md:w-72  md:mx-auto'>
-                  <Manager/>
+            <Manager/>
             </div>
             <h1 className='font-bold text-xl mt-4'>Rinaldo Lim</h1>
             <h2 className='text-gray-500 font-bold -mt-2 mb-2'>Project Manager</h2>

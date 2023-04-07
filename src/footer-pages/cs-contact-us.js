@@ -1,20 +1,33 @@
-//FOOTER PAGES
+//contact-us footer pages
 
-import React from 'react'
+
+import React,{useState, useEffect} from 'react'
+
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+
+import { Link } from 'react-router-dom'
+
+
+//db is from our firebase extract.
 import { db } from '../Database/firebase'
+
+//install firebase to access addDoc and collection from firestore.
 import { addDoc, collection } from 'firebase/firestore'
+
+//install formik to access useFormik functionality
 import { useFormik } from 'formik'
+
+//install schema and yup to access this functionality
 import { schemaObject } from '../functions/schema'
 
 
 export const Contact = () => {
 
-    //create a function userCollectionRef to hold the data in our contact-us
+    //create a function userCollectionRef to hold the data in our contact-us collection.
     const userCollectionRef = collection(db, "contact-us")
 
    
-
-    //submitData is to get the values from our formik function then add that data to firebase.
+    //submitData is to get the values from our formik function then add that data to our contact-us collection.
     const submitData = (e) =>{
         e.preventDefault()
 
@@ -52,15 +65,42 @@ export const Contact = () => {
         validationSchema: schemaObject,
   
     })
+
+    const [isBreakpointSmall, setIsBreakPointSmall] = useState(false)
+    
+    useEffect(() => {
+  
+      const handleSmall = () => {
+        if (window.innerWidth <= 640) {
+          setIsBreakPointSmall(true);
+        } else {
+          setIsBreakPointSmall(false);
+        }
+      };
+      handleSmall();
+      window.addEventListener('resize', handleSmall);
+      return () => {
+        window.removeEventListener('resize', handleSmall);
+      };
+    }, []);
  
   return (
     <div className='max-w-7xl mx-auto '>
         
         <div className="mx-5 my-5">
-            <h1 className='font-bold text-5xl mt-10 text-orange-500'>Get in touch</h1>
-            <p className='text-gray-500 italic text-justify text-md mt-2 mb-10'>Have a question or need help with an order? Our friendly customer support team is available to assist you. 
+
+        {isBreakpointSmall
+            ?
+            <Link to='/'>  <AiOutlineArrowLeft className='' size={35}/></Link>
+            :
+            ''
+            }
+
+            <h1 className='font-bold text-5xl mt-5 text-orange-500'>Get in touch</h1>
+            <p className='text-gray-500 text-justify text-md mt-2 mb-10'>Have a question or need help with an order? Our friendly customer support team is available to assist you. 
             Contact us between 8 a.m. and 8 p.m., and we will respond as quickly as possible!</p>
 
+            {/* form-section */}
               <form onSubmit={handleSubmit}>
                 <div className='w-full '>
 
@@ -117,7 +157,8 @@ export const Contact = () => {
                 onChange={handleChange} 
                 onBlur={handleBlur}
                 id="phoneNumber"
-                type="number" className='border-2 border-black w-full h-9 p-3 md:w-72 lg:w-96'    
+                type="number" 
+                className='border-2 border-black w-full h-9 p-3 md:w-72 lg:w-96 '    
                 />
                 {errors.phoneNumber && touched.phoneNumber && <p className='input-error'>{errors.phoneNumber}</p>}
                 
@@ -152,19 +193,19 @@ export const Contact = () => {
 
              <div className='lg:flex justify-end'>
 
-                    <button
-                     type='submit' 
-                     onClick={submitData} 
-                     className='w-full mb-4 bg-indigo-600 py-2 rounded-md text-white hover:bg-orange-500 lg:w-32'
-                     >Submit
-                     </button>
+                <button
+                type='submit' 
+                onClick={submitData} 
+                className='w-full mb-4 bg-indigo-600 py-2 rounded-md text-white hover:bg-orange-500 lg:w-32'
+                >Submit
+                </button>
                     
 
-                 </div> 
-                </div>
-            </form>
-              
-        </div>
+                                     </div> 
+                              </div>
+                         </form>
+                     {/* form-section end*/}
+             </div>
        </div>
   )
 }

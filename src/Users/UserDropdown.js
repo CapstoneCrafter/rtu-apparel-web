@@ -1,3 +1,5 @@
+//DROPDOWN FOR OUR USER NAVBAR
+
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -59,7 +61,7 @@ export default function UserDropdown() {
                 </Link>
               )}
             </Menu.Item>
-
+{/* 
             <Menu.Item>
               {({ active }) => (
                 <Link to='settings' className={classNames(
@@ -71,9 +73,9 @@ export default function UserDropdown() {
                   Settings
                 </Link>
               )}
-            </Menu.Item>
+            </Menu.Item> */}
 
-            <Menu.Item>
+            {/* <Menu.Item>
               {({ active }) => (
                 <Link to='purchase' className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
@@ -84,7 +86,7 @@ export default function UserDropdown() {
                   Purchase
                 </Link>
               )}
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item>
               {({ active }) => (

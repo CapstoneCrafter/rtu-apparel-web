@@ -4,7 +4,6 @@ import React from 'react'
 import { BrowserRouter as Router, 
          Routes, 
          Route, 
-         Navigate
 } from 'react-router-dom'
 
 //RTU Apparel main pages.
@@ -40,7 +39,6 @@ import UserMain from '../Users/UserMain'
 //RTU Apparel user pages
 import UserAccount from '../Users/UserAccount'
 import UserSettings from '../Users/UserSettings'
-import UserCart from '../Users/UserCart'
 import UserPurchase from '../Users/UserPurchase'
 
 //RTU Apparel user categories. 
@@ -63,7 +61,6 @@ import UserHandkerchiefCart from '../Users/UserHandkerchiefCart'
 import UserTumblerCart from '../Users/UserTumblerCart'
 import UserMugCart from '../Users/UserMugCart'
 import UserCartMapping from '../Users/UserCartMapping'
-import UserCheckOut from '../Users/UserCheckOut'
 import UserCheckOutMapping from '../Users/UserCheckOutMapping'
 
 

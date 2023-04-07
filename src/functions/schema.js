@@ -38,7 +38,17 @@ export const schemaObject = yup.object().shape({
     password: yup.string()
     .min(5)
     .matches(passwordRules, {message: "Please create a stronger password."})
-    .required("Create a password.")
+    .required("Create a password."),
+
+    studentNumber: yup.string()
+    .required('Kindly enter your student number.'),
+  
+  
+    address: yup.string()
+    .required('Kindly provide your current address.'),
+
+    name: yup.string()
+    .required('Kindly enter your full name.')
 
 })
 

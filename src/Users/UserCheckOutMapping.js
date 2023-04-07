@@ -1,13 +1,70 @@
-import React, {useContext} from 'react'
+//CHECKOUT PAGE
+
+import React, {useContext, useEffect, useState} from 'react'
 import { ShopContext } from '../functions/cartContext';
 import UserCheckOut from './UserCheckOut';
 import { RTUPRODUCTS } from './UserProducts';
+import style from './style.css'
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../Database/firebase';
+import { useFormik } from 'formik';
+import { schemaObject } from '../functions/schema';
 
 const UserCheckOutMapping = () => {
     
     const { cartItems, getTotalCartAmount, getTotalPayment} = useContext(ShopContext)
     const totalAmount = getTotalCartAmount()
     const TotalPayment = getTotalPayment()
+    
+    const checkOutCollectionRef = collection(db, "place-order")
+
+        //formik hook return form values, state value, etc.
+        const {values, errors, touched, handleChange, resetForm ,handleBlur, handleSubmit} = useFormik({
+
+            // this is gonna be our state
+            initialValues: {
+                email: "",
+                studentNumber: "",
+                address: "",
+                name: '',
+                phoneNumber: "",
+                message: "",
+                cash: "cash on delivery",
+                     
+            },
+    
+            //Our form is gonna use the schemaObject and validate the form.
+            validationSchema: schemaObject,
+      
+        })
+
+    const submitData = (e, id, selectedVariation, selectedSize) => {
+        e.preventDefault();
+    
+        const productsData = RTUPRODUCTS.filter((product) => cartItems[product.id] !== 0).map((product) => ({
+          productName: product.productName,
+          productVariation: product.id === id ? selectedVariation : localStorage.getItem(`selectedVariation_${product.id}`) || '',
+          productSize: product.id === id ? selectedSize : localStorage.getItem(`selectedSize_${product.id}`) || '',
+          productPrice: product.price,
+          productQuantity: cartItems[product.id],
+        }));
+    
+        addDoc(checkOutCollectionRef, {
+          email: values.email,
+          studentNumber: values.studentNumber,
+          address: values.address,
+          name: values.name,
+          phoneNumber: values.phoneNumber,
+          message: values.message,
+          cash: values.cash,
+          products: productsData,
+        }).then(() => {
+          resetForm({
+            values: values.initialValues,
+          });
+          window.location.reload();
+        });
+      };
 
   return (
     <div className='max-w-7xl mx-auto'>
@@ -21,30 +78,88 @@ const UserCheckOutMapping = () => {
 
         <div className='checkout-form mt-5 lg:flex lg:justify-between '>
             <div className=' lg:w-3/5 lg:mr-5 xl:w-3/6'>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className='mb-4'>
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Email</label>
-                    <input className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' placeholder='ENTER YOUR EMAIL ADDRESS' type='email'/>
+
+                    <input 
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id='email'
+                    className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' 
+                    placeholder='ENTER YOUR EMAIL ADDRESS' 
+                    type='email' 
+                    required
+                    />
+                    {errors.email && touched.email && <p className='input-error'>{errors.email}</p>}
+
                 </div>
 
                 <div className='mb-4'>
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Student Number</label>
-                    <input className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' placeholder='ENTER YOUR STUDENT NUMBER' type='number'/>
+
+                    <input 
+                    value={values.studentNumber}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id='studentNumber'
+                    className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' 
+                    placeholder='ENTER YOUR STUDENT NUMBER' 
+                    type='number' 
+                    required
+                    />
+                    {errors.studentNumber && touched.studentNumber && <p className='input-error'>{errors.studentNumber}</p>}
+
                 </div>
 
                 <div className='mb-4'>
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Delivery Address</label>
-                    <textarea className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none resize-none hover:border-orange-600 focus:border-orange-600' placeholder='ENTER YOUR FULL DELIVERY ADDRESS' />
+
+                    <textarea 
+                    value={values.address}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id='address'
+                    className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none resize-none hover:border-orange-600 focus:border-orange-600' 
+                    placeholder='ENTER YOUR FULL DELIVERY ADDRESS' 
+                    required    
+                    />
+                    {errors.address && touched.address && <p className='input-error'>{errors.address}</p>}
+
                 </div>
 
                 <div className='mb-4'>
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Name</label>
-                    <input className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' placeholder='ENTER YOUR FULL NAME' type='email'/>
+
+                    <input 
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id='name'
+                    className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' 
+                    placeholder='ENTER YOUR FULL NAME' 
+                    type='email' 
+                    required
+                    />
+                    {errors.name && touched.name && <p className='input-error'>{errors.name}</p>}
+
                 </div>
 
                 <div className='mb-4'>
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Phone Number</label>
-                    <input className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' placeholder='ENTER YOUR CONTACT NUMBER' type='number'/>
+                    <input 
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id='phoneNumber'
+                    className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none hover:border-orange-600 focus:border-orange-600' 
+                    placeholder='ENTER YOUR CONTACT NUMBER' 
+                    type='number' 
+                    required
+                    />
+                    {errors.phoneNumber && touched.phoneNumber && <p className='input-error'>{errors.phoneNumber}</p>}
+
                 </div>
 
                 <div className='mb-4'>
@@ -52,7 +167,16 @@ const UserCheckOutMapping = () => {
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Message</label>
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Optional</label>
                     </div>
-                    <textarea className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none resize-none hover:border-orange-600 focus:border-orange-600' placeholder='ENTER YOUR MESSAGE. (OPTIONAL)' />
+                    <textarea 
+                    value={values.message}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    id='message'
+                    className='border border-[#725AC1] w-full p-3 rounded-sm text-sm outline-none resize-none hover:border-orange-600 focus:border-orange-600' 
+                    placeholder='ENTER YOUR MESSAGE. (OPTIONAL)' 
+                    required
+                    />
+
                 </div>
 
                
@@ -62,8 +186,17 @@ const UserCheckOutMapping = () => {
                     <label className='block text-sm uppercase font-semibold text-[#748386]'>Payment Option:</label>
                     
                     <div className='md:flex'>
-                        <button className='border  bg-blue-900 w-full p-3 mb-3 rounded-sm text-sm outline-none resize-none uppercase font-semibold text-white hover:bg-red-600 focus:bg-red-600 md:mb-0'>Cash on Delivery</button>
-                        <button className='border bg-[#22333B] w-full p-3 rounded-sm text-sm outline-none resize-none cursor-not-allowed text-white font-semibold hover:bg-red-600 focus:bg-red-600'>GCASH</button>
+                        <button 
+                        values={values.cash} 
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        id='cash'
+                        className='border  bg-blue-900 w-full p-3 mb-3 rounded-sm text-sm outline-none resize-none uppercase font-semibold text-white hover:bg-red-600 focus:bg-red-600 md:mb-0'>
+                        Cash on Delivery
+                        </button>
+
+
+                        <button className='border bg-[#22333B] w-full p-3 rounded-sm text-sm outline-none resize-none cursor-not-allowed text-white font-semibold hover:bg-red-600'>GCASH</button>
                     </div>
                 </div>
                 <p className='text-red-600 text-sm text-justify italic font-semibold'>NOTE: Unfortunately, the GCASH payment method is not currently available at this time.</p>
@@ -74,19 +207,27 @@ const UserCheckOutMapping = () => {
             <div className='mt-10 lg:mt-0'>
 
                 {/* PRODUCT DETAILS START */}
-                {/* <h1 className='text-2xl uppercase font-bold text-indigo-600 mb-2 2xl:text-red-500'>Product Details</h1>
-                <h1 className='text-sm uppercase font-semibold text-[#748386]'>Product: <span className='text-sm text-red-500 font-bold ml-5'>{productName}</span></h1>
-                <h1 className='text-sm uppercase font-semibold text-[#748386]'>Variations: <span className='text-sm text-red-500 font-bold ml-1 '>Package</span></h1>
-                <h1 className='text-sm uppercase font-semibold text-[#748386]'>Size: <span className='text-sm text-red-500 font-bold ml-14 '>S</span></h1>
-                <h1 className='text-sm uppercase font-semibold text-[#748386]'>Quantity: <span className='text-sm text-red-500 font-bold ml-4'>1</span></h1> */}
+            
                 <div>
                 <h1 className='text-2xl uppercase font-bold text-indigo-600 mb-2 '>Product Details</h1>
-                 {RTUPRODUCTS.map((product) => {
-                    if(cartItems[product.id] !== 0) {
-                        return <UserCheckOut data={product} />
-                    }
-                })} 
-                </div>  
+                {RTUPRODUCTS.map((product) => {
+                  if (cartItems[product.id] !== 0) {
+                    return (
+                      <UserCheckOut
+                        key={product.id}
+                        data={product}
+                        onSubmit={(e, selectedVariation, selectedSize) =>
+                          submitData(e, product.id, selectedVariation, selectedSize)
+                        }
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+
+
+
                 {/* PRODUCT DETAILS END */}
 
                 {/* PAYMENT DETAILS START */}
@@ -118,7 +259,14 @@ const UserCheckOutMapping = () => {
             </div>
 
             <form className='mt-10'>
-                <button className='uppercase w-full bg-orange-600 text-white p-3 rounded-sm font-semibold hover:opacity-80'>Place Order</button>
+
+                <button 
+                onClick={submitData} 
+                className='uppercase w-full bg-orange-600 text-white p-3 rounded-sm font-semibold hover:opacity-80'
+                >
+                Place Order
+                </button>
+
             </form>
 
             </div>
@@ -134,25 +282,3 @@ const UserCheckOutMapping = () => {
 }
 
 export default UserCheckOutMapping
-
-// import React, {useContext} from 'react'
-// import { ShopContext } from '../functions/cartContext';
-// import UserCheckOut from './UserCheckOut';
-// import { RTUPRODUCTS } from './UserProducts';
-
-// const UserCheckOutMapping = () => {
-    
-//     const { cartItems   } = useContext(ShopContext)
-
-//   return (
-//     <div>
-//     {RTUPRODUCTS.map((product) => {
-//     if(cartItems[product.id] !== 0) {
-//         return <UserCheckOut data={product} />
-//     }
-// })} 
-// </div>
-//   )
-// }
-
-// export default UserCheckOutMapping

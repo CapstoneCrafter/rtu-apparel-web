@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 /* .about{
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/57/RTU_Seal.png');
     background-position: center;

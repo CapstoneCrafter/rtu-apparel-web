@@ -1,4 +1,4 @@
-
+//RTU APPAREL ITEM CART.
 import React, { useState, useEffect, useContext} from 'react'
 
 import { BsTrash } from 'react-icons/bs'
@@ -7,7 +7,7 @@ import { ShopContext } from '../functions/cartContext'
 
 export const UserCart = (props) => {
 
-  const{id, productName, price, productImage, productVariation, productSize} = props.data
+  const{id, productName, price, productImage} = props.data
 
   const { cartItems, addToCart, removeFromCart, deleteFromCart, getTotalAmountForItem} = useContext(ShopContext)
   const [selectedVariation, setSelectedVariation] = useState()
@@ -19,14 +19,6 @@ export const UserCart = (props) => {
 
   const cartAmount = getTotalAmountForItem(id)
 
-  const handleVariation = (e) => {
-     const selectedVariation = e.target.value
-    localStorage.setItem('selectedVariation', selectedVariation)
-    setSelectedVariation(selectedVariation)
-
-    
-  }
-
   useEffect(() => {
     const storedVariation = localStorage.getItem('selectedVariation');
     if (storedVariation) {
@@ -34,11 +26,6 @@ export const UserCart = (props) => {
     }
   }, []);
 
-  const handleSize = (e) => {
-    const selectedSize = e.target.value
-    localStorage.setItem('selectedSize', selectedSize)
-    setSelectedSize(selectedSize)
-  }
 
   useEffect(() => {
     const storedSize = localStorage.getItem('selectedSize');

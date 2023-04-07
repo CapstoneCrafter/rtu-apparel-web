@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
-import {BsCart3} from 'react-icons/bs'
+//RTU MUG PRODUCTS WITH DESCRIPTION
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useState } from 'react'
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,28 +9,12 @@ import "swiper/css/pagination";
 import MugCEAT from '../components/MugCEAT';
 import MugCBET from '../components/MugCBET';
 
-// import required modules
-import { Pagination } from "swiper";
+
 
 export const UserMugCart = () => {
 
   const [imageSlide, setImageSlide] = useState(0)
-  const [quantity, setQuantity] = useState(1)
 
-  const decrementQuantity = () => {
-      //If quantity is greater than 5, then, decrement the quantity til it will equal to 1. If quantity is === 1, stop.
-      if(quantity > 1){
-            setQuantity(quantity - 1)
-      }
-  }
-
-  const incrementQuantity = () => {
-    //If quantity is less than 5, then, increment the quantity til it will equal to 5. If quantity is === 5, stop.
-    if(quantity < 5){
-      setQuantity(quantity + 1)
-    }
-}
-  
   const handleCEAT = () =>{
     setImageSlide(0)
   }
@@ -67,16 +49,7 @@ export const UserMugCart = () => {
          
         </div>
 
-        <div className='mt-5 flex items-center'>
-          <h1 className='mr-5 text-lg text-indigo-600 font-semibold'>QUANTITY:</h1>
-          
-          <div className='bg-gray-100 p-1 flex '>
-            <button onClick={decrementQuantity} className='w-8 font-black'>-</button> 
-            <h1 className='w-8 outline-0 text-center bg-gray-100'>{quantity}</h1>
-            <button onClick={incrementQuantity} className='w-8 font-black'>+</button>
-          </div>
       
-        </div>
         </div>
 
         <h1 className='text-lg mt-4 font-semibold text-indigo-600 '>DESCRIPTION:</h1>

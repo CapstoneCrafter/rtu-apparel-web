@@ -15,7 +15,8 @@ import { useAuth } from '../functions/authContext'
 import {FcGoogle} from 'react-icons/fc'
 
 import {AiOutlineEye,
-        AiOutlineEyeInvisible
+        AiOutlineEyeInvisible,
+        AiOutlineArrowLeft
 } from 'react-icons/ai'
 import { db } from '../Database/firebase'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
@@ -147,17 +148,41 @@ const SignIn = () => {
     //     }
     // }
 
-
+    const [isBreakpointSmall, setIsBreakPointSmall] = useState(false)
+    useEffect(() => {
+  
+      const handleSmall = () => {
+        if (window.innerWidth <= 640) {
+          setIsBreakPointSmall(true);
+        } else {
+          setIsBreakPointSmall(false);
+        }
+      };
+      handleSmall();
+      window.addEventListener('resize', handleSmall);
+      return () => {
+        window.removeEventListener('resize', handleSmall);
+      };
+    }, []);
 
   return (
  
     <div className='max-w-7xl mx-auto mb-52'>
 
+            <div className='m-5'>
+            {isBreakpointSmall
+            ?
+            <Link to='/'>  <AiOutlineArrowLeft className='' size={35}/></Link>
+            :
+            ''
+            }
+            </div>
+
         <div className='mx-5 my-10 mb-20  md:flex items-center  '>
             <div className=' md:w-72 md:mr-10 lg:w-cc lg:ml-10'>
 
-            <h1 className='font-bold text-center text-5xl text-orange-500 italic md:text-4xl md:text-left lg:text-5xl '>RTU APPAREL</h1>
-            <p className='text-gray-500 mt-4 text-center text-md italic md:text-sm md:text-left md:mt-2 lg:text-2xl'>To access your RTU Apparel account, 
+            <h1 className='tracking-widest text-center font-fontMain text-5xl text-orange-500  md:text-4xl md:text-left lg:text-5xl '>RTU APPAREL</h1>
+            <p className='text-gray-500 mt-4 text-center text-md italic md:not-italic md:text-sm md:text-left md:mt-2 lg:text-2xl'>To access your RTU Apparel account, 
                 please enter your login credentials.
             </p>
             </div>
@@ -172,7 +197,7 @@ const SignIn = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type='text' 
-                    className='block mb-4 border-2 border-gray-300 w-full rounded-md h-14 pl-5 hover:border-orange-500' 
+                    className='block mb-4 border-2 border-gray-300 w-full rounded-md h-14 pl-5 outline-none hover:border-orange-500' 
                     placeholder='Email'/>
                     </div>
 
@@ -181,7 +206,7 @@ const SignIn = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     type={showPassword ? 'text' : 'password'}
-                    className='block mb-2 border-2 border-gray-300 w-full rounded-md h-14 pl-5 hover:border-orange-500' 
+                    className='block mb-2 border-2 border-gray-300 w-full rounded-md h-14 pl-5 outline-none hover:border-orange-500' 
                     placeholder='Password'/>
                   
                    <div className='' onClick={PasswordShow}>
@@ -205,7 +230,7 @@ const SignIn = () => {
                 </form>
            
             <div className='text-center pb-5 border-b-2 border-gray-300'>
-                  <Link to='forget-password' className=' text-indigo-600 font-medium italic hover:underline'>Forget password?</Link>
+                  <Link to='forget-password' className=' text-indigo-600 text-sm font-medium  hover:underline'>Forget password?</Link>
                   
                   </div>
 
@@ -213,16 +238,16 @@ const SignIn = () => {
                  
                     <button  
                     onClick={handleGoogle}
-                    className='flex items-center font-bold justify-center p-3 rounded-md border-2 border-gray-300 w-full hover:opacity-80 hover:border-black'> 
+                    className='flex items-center font-bold justify-center p-3 rounded-md border-2 border-gray-300 w-full hover:opacity-80 hover:opacity-80'> 
                     {<FcGoogle size={25} className='mr-2'/>} 
                     Google 
                     </button>
                     
                         </div>
 
-                        <div className='text-center pb-10 mt-5 italic'>
+                        <div className='text-center pb-10 mt-5'>
 
-                            <h1 className='text-gray-500'>New to RTU Apparel? <Link className='text-orange-500 underline hover:text-indigo-600' to='signup'>Sign Up</Link></h1>
+                            <h1 className='text-gray-500 text-sm'>New to RTU APPAREL? <Link className='text-orange-500 underline italic hover:text-indigo-600' to='signup'>Sign Up</Link></h1>
                           
                         </div>
 

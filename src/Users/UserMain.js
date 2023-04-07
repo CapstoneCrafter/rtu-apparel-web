@@ -1,4 +1,7 @@
-//THIS FILE WILL SHOW IF USER LOGIN THEIR ACCOUNT
+//THIS FILE WILL SHOW, IF USER LOGIN THEIR ACCOUNT
+//THIS PAGE CONTAIN SLIDERCOMPONENT(SLIDESHOW)
+//THIS PAGE CONTAIN RTU CATEGORIES
+//THIS PAGE CONTAIN RTU COLLECTION
 
 import UserCategory from '../components/user-img-cate';
 import UserLace from '../components/user-img-lace'
@@ -25,8 +28,8 @@ const UserMain = () => {
       <SliderComponent/>  
    
     <div className='my-10 '>
-        <h1 className='font-bold text-2xl text-orange-500 '>Shop Our Categories</h1>
-        <p className='text-gray-500 italic text-sm text-justify md:text-base'>Welcome to RTU Apparel, your one-stop-shop for all your clothing needs. Browse our extensive collection of high-quality items organized into convenient categories, 
+        <h1 className='tracking-widest font-fontMain text-2xl text-orange-500 '>Shop Our Categories</h1>
+        <p className='text-gray-500 text-sm text-justify md:text-base'>Welcome to RTU Apparel, your one-stop-shop for all your clothing needs. Browse our extensive collection of high-quality items organized into convenient categories, 
             including Uniforms, Pants, Jerseys, ID Laces, Patches, and Accessories. Find the perfect apparel to suit your needs and show off your RTU pride.</p>
     </div>
 
@@ -96,21 +99,12 @@ const UserMain = () => {
 
 
      <div className='mx-5 md:mb-10 '>
-            <h1 className='font-bold text-2xl text-orange-500'>RTU Collection</h1>
-            <p className='text-gray-500 italic text-sm text-justify md:text-base'>Stay stylish and show your school pride with the RTUCollection section of RTU apparel, 
+            <h1 className='tracking-widest font-fontMain text-2xl text-orange-500'>RTU Collection</h1>
+            <p className='text-gray-500 text-sm text-justify md:text-base'>Stay stylish and show your school pride with the RTUCollection section of RTU apparel, 
             featuring a variety of trendy and high-quality clothing items adorned with the university's iconic logo.</p>
         </div>
-        {/* <div className='border flex'>
-     <Link to='cart'>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className='w-6 h-6'>
-      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-      </svg>
-      </Link>
-  
-      
-    </div> */}
-
-    <div className='mx-5 mt-2 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5'>
+    
+    <div className='mx-5 mt-2 grid grid-cols-2 gap-5 md:grid-cols-2 lg:grid-cols-5'>
      {RTUPRODUCTS.map((product) => (
         <UserRTUCollection data={product}/>
      ))}
