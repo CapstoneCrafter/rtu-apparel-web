@@ -1,7 +1,5 @@
 //help-centre footer-page
 
-
-
 import React, {useState, useEffect} from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 

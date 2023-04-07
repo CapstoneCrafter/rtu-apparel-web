@@ -2,7 +2,6 @@
 
 import React,{ useState, useEffect} from 'react'
 
-import Nav from '../Navigation/Nav'
 import { Link } from 'react-router-dom'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
 
