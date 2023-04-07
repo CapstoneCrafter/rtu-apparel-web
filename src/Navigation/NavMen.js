@@ -63,7 +63,7 @@ export const NavMen = () => {
 
           </div>
           
-      <div className='grid grid-cols-2 gap-5 mt-10 md:grid-cols-3 lg:grid-cols-5'>
+      <div className='grid grid-cols-1 gap-5 mt-10 md:grid-cols-3 lg:grid-cols-5'>
 
         <Link to='signin'>
         <div className='h-auto w-auto shadow-2xl shadow-indigo-300 rounded-lg '>

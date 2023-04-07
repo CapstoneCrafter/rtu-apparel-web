@@ -33,7 +33,7 @@ const UserCheckOut = (props) => {
                   </div>
 
                   <select 
-                    className=' ml-2 text-sm font-bold uppercase text-black outline-none ' 
+                    className=' ml-2 text-sm font-bold uppercase text-black outli ' 
                     value={selectedVariation} 
                     onChange={handleVariation}
                     >
@@ -57,11 +57,11 @@ const UserCheckOut = (props) => {
                     <div className='flex items-center'>
 
                       <div>
-                        <h1 className='text-sm uppercase mb-5 font-semibold text-[#748386]'>SELECT SIZE:</h1>
+                        <h1 className='text-sm uppercase mb-5 font-semibold text-[#748386] mt-2'>SELECT SIZE:</h1>
                       </div>
 
                     <select 
-                    className='mb-5 ml-2 text-sm font-bold uppercase text-black outline-none ' 
+                    className='mb-5 ml-2 text-sm font-bold uppercase text-black outline-none mt-2 ' 
                     value={selectedSize} 
                     onChange={handleSize}>
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext} from 'react'
 
 import { BsTrash } from 'react-icons/bs'
 import { ShopContext } from '../functions/cartContext'
+import { Link } from 'react-router-dom'
 
 
 export const UserCart = (props) => {
@@ -130,7 +131,7 @@ export const UserCart = (props) => {
 
                 <div className='flex justify-end mt-5 mb-2'>
                   <button onClick={() => deleteFromCart(id)} className={`${isBreakpointSmall ? 'hidden' : ''} text-white bg-red-600 p-2 w-32 rounded-md mr-2`}>Delete</button>
-                  <button className={`${isBreakpointSmall ? 'hidden' : ''} text-white bg-black p-2 w-32 rounded-md`}>Check Out</button>
+                  <Link to='/cart/checkout'><button className={`${isBreakpointSmall ? 'hidden' : ''} text-white bg-black p-2 w-32 rounded-md`}>Check Out</button></Link>
                 </div>
             </div>
 
