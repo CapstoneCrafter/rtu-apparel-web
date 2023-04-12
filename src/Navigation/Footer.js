@@ -53,19 +53,20 @@ export const Footer = () => {
      
         <div className='mt-5 md:pt-20'>
             <h1 className='font-semibold text-[#F7B32B] text-lg uppercase mb-4'>Accepted Payments</h1>
-            <div className='grid gap-2 grid-cols-2 md:grid-cols-3'>
+          
+            <div className='flex items-center -ml-2 md:justify-start'>
 
-                <div className='cod-payment w-14 h-14 '>
+               
+                <div className='w-12 h-12 mx-2'>
                     <CodPayment/>
                 </div>
 
-                <div className='gcash-payment w-14 h-14 -ml-32 md:m-0' >
+               
+                <div className='w-12 h-12 mx-2'>
                     <GcashPayment/>
                 </div>
 
-                <div className='dr-payment w-14 h-14 -mt-8 md:m-0  '>
-                    <DragonPayment/>
-                </div>
+            
             </div>
             </div>
 
