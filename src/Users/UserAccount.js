@@ -11,7 +11,7 @@ export const UserAccount = () => {
     const handleLogOut = async () =>{
 
       try{
-        await logOut()
+        logOut()
         navigate('/')
       }catch(error){
         console.log(error.message)

@@ -24,6 +24,7 @@ import signin from './signin.css'
 
 const SignIn = () => {
 
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -92,7 +93,7 @@ const SignIn = () => {
           
             try {
               const result = await googleSignIn();
-              console.log(result)
+              // console.log(result)
               const { user } = result;
 
               const existingUserQuery = query(userCollectionRef,where('googleId', '==', user.uid))

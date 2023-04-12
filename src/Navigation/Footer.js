@@ -55,15 +55,15 @@ export const Footer = () => {
             <h1 className='font-semibold text-[#F7B32B] text-lg uppercase mb-4'>Accepted Payments</h1>
             <div className='grid gap-2 grid-cols-2 md:grid-cols-3'>
 
-                <div className='w-14 h-14 '>
+                <div className='cod-payment w-14 h-14 '>
                     <CodPayment/>
                 </div>
 
-                <div className=' w-14 h-14 -ml-32 md:m-0' >
+                <div className='gcash-payment w-14 h-14 -ml-32 md:m-0' >
                     <GcashPayment/>
                 </div>
 
-                <div className='w-14 h-14 -mt-8 md:m-0  '>
+                <div className='dr-payment w-14 h-14 -mt-8 md:m-0  '>
                     <DragonPayment/>
                 </div>
             </div>
