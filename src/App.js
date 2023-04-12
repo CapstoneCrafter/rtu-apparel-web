@@ -11,8 +11,8 @@ function App() {
     <div className="App">  
  
       <AuthContextProvider> 
-        <ShopContextProvider>
-            <MainRoutes/>
+           <ShopContextProvider>
+              <MainRoutes/>
             </ShopContextProvider>   
       </AuthContextProvider>
   
